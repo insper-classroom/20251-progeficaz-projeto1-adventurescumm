@@ -1,11 +1,10 @@
-from utils import load_data, load_template, add_json
-import json
+from utils import load_data, load_template, add_sql
 
 def index():
     note_template = load_template('components/note.html')
     notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
+        note_template.format(title=dados[0], details=dados[1])
+        for dados in load_data('static\data\db_web.db')
     ]
     notes = '\n'.join(notes_li)
 
@@ -16,4 +15,4 @@ def submit(titulo, detalhes):
         "titulo": titulo,
         "detalhes": detalhes
     }
-    return  add_json(dados)
+    return  add_sql(dados)
