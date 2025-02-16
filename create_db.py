@@ -12,7 +12,8 @@ cur.execute("DROP TABLE IF EXISTS notes")
 #Create users table  in db_web database
 sql ='''CREATE TABLE "notes" (
 	"TITULO" TEXT,
-    "DETALHES" TEXT
+    "DETALHES" TEXT,
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT
 )'''
 cur.execute(sql)
 

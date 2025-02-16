@@ -1,6 +1,8 @@
 from flask import Flask, render_template_string, request, redirect
 import views
 
+id = 0
+
 caminho = "static/data/notes.json"
 
 app = Flask(__name__)
@@ -20,6 +22,14 @@ def submit_form():
 
     views.submit(titulo, detalhes)
     return redirect('/')
+
+@app.route('/delete/<note_id>', methods=['GET'])
+def delete_form(note_id):
+    views.delete(note_id)
+    return redirect('/')
+
+# @app.route('/edit/<note_id>', methods=['PUT'])
+# def edit_form():
 
 
 if __name__ == '__main__':

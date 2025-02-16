@@ -16,6 +16,14 @@ def add_sql(dados, filename='static/data/db_web.db'):
     con = sql.connect(filename)
     cur = con.cursor()
     cur.execute(
-        "INSERT INTO notes(TITULO, DETALHES) VALUES (?, ?)", (dados[0], dados[1])
+        "INSERT INTO notes(TITULO, DETALHES) VALUES (?, ?)", (dados['titulo'], dados['detalhes'])
+    )
+    con.commit()
+
+def delete_sql(note_id, filename='static/data/db_web.db'):
+    con = sql.connect(filename)
+    cur = con.cursor()
+    cur.execute(
+        "DELETE FROM notes WHERE ID=?", (note_id)
     )
     con.commit()
