@@ -27,3 +27,11 @@ def delete_sql(note_id, filename='static/data/db_web.db'):
         "DELETE FROM notes WHERE ID=?", (note_id)
     )
     con.commit()
+
+def edit_sql(dados, note_id, filename='static/data/db_web.db'):
+    con = sql.connect(filename)
+    cur = con.cursor()
+    cur.execute(
+        "UPDATE notes SET TITULO = ?, DETALHES = ? WHERE ID = ?", (dados['titulo'], dados['detalhes'], note_id)
+    )
+    con.commit()
